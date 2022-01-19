@@ -1,0 +1,108 @@
+.adminProducto{
+    padding-top: 180px;
+    .titulo{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        h1{
+            width: 240px;
+            text-align: center;
+            color: #ffffff;
+            background-color: #000000b6;
+            border-radius: 15px;
+            padding: 15px;
+        }
+    }
+    .container__producto{
+        background-color: #000000b6;
+        border-radius: 15px;
+        padding: 15px;
+        width: 800px;
+        .formulario-producto{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            form{
+                display: flex;
+                flex-direction: column;
+                .datos{
+                    display: flex;
+                    flex-direction: row;
+                    select{
+                        padding: 5px;
+                        border-radius: 5px;
+                        width: 250px;
+                        height: 40px;
+                        margin-left: 5px;
+                        margin-top: 8px;
+                        margin-bottom: 8px;
+                    }
+                    input{
+                        height: 40px;
+                        margin-left: 5px;
+                    }
+                }
+                textarea{
+                    margin-left: 5px;
+                    width: 561px;
+                }
+                .archivo{
+                    margin-left: 5px;
+                    margin-top: 8px;
+                    label{
+                        margin-left: -5px;
+                    }
+                    span{
+                        background-color: black;
+                        width: 125px;
+                        position: absolute;
+                        border-radius: 5px 0px 0px 5px;
+                    } 
+                }
+                .archivos{
+                    margin-left: 5px;
+                    margin-top: 8px;
+                    label{
+                        margin-left: -5px;
+                    }
+                    span{
+                        background-color: black;
+                        width: 100px;
+                        position: absolute;
+                        border-radius: 5px 0px 0px 5px;
+                    } 
+                }
+                h4{
+                    color: #ffffff;
+                }
+                .stock{
+                    margin-left: 5px;
+                }
+                button{
+                    background-color: #000000;
+                    border: 2px solid #ffffff;
+                    color: #ffffff;
+                    text-transform: uppercase;
+                    font-size: 16px;
+                    border-radius: 45px;
+                    padding: 15px 20px;
+                    align-self: center;
+                    margin-bottom: 10px;
+                    width: 125px;
+                    height: 55px;
+                    display: flex;
+                    svg{
+                        margin-left: 15px;
+                        font-size: 18px;
+                    }
+                    &:hover{
+                        svg{
+                            margin-left: 20px;
+                            transition: 0.5s;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

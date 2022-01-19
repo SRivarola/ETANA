@@ -1,0 +1,27 @@
+.modal-header{
+    background-color: black;
+    h5{
+        color: white;
+    }
+    .btn-close{
+        background-color: white;
+    }
+}
+
+.input-group-text{
+    background-color: black;
+    color: white;
+}
+.btn-login{
+    color: white;
+    background-color: black;
+    width: 30%;
+    border: none;
+    margin: 0 auto;
+    margin-top: -15px;
+    margin-bottom: 10px;
+    height: 35px;
+    &:hover{
+        background-color: #292525;
+    }
+}

@@ -1,0 +1,180 @@
+.adminEliminar{
+    padding-top: 180px;
+    .titulo{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        h1{
+            width: 240px;
+            text-align: center;
+            color: #ffffff;
+            background-color: #000000b6;
+            border-radius: 15px;
+            padding: 15px;
+        }
+    }
+    .container__eliminar{
+        display: flex;
+        flex-direction: row;
+        margin-top: 30px;
+        .formulario-eliminar{
+            display: flex;
+            flex-direction: row;
+            margin: 0 auto;
+            form{
+                display: flex;
+                flex-direction: column;
+                .info{
+                    display: flex;
+                    flex-direction: row;
+                    select{
+                        padding: 5px;
+                        border-radius: 5px;
+                        width: 250px;
+                        height: 40px;
+                        margin-left: 5px;
+                        margin-top: 8px;
+                    }
+                    button{
+                        background-color: #000000;
+                        border: 2px solid #ffffff;
+                        color: #ffffff;
+                        text-transform: uppercase;
+                        font-size: 16px;
+                        border-radius: 45px;
+                        padding: 15px 20px;
+                        align-items: center;
+                        margin-bottom: 10px;
+                        width: 125px;
+                        height: 55px;
+                        margin-left: 20px;
+                        svg{
+                            margin-left: 15px;
+                            font-size: 18px;
+                        }
+                        &:hover{
+                            svg{
+                                margin-left: 20px;
+                                transition: 0.5s;
+                            }
+                        }
+                    }
+                    .imgProduct{
+                        width: 150px;
+                        margin-left: 15px;
+                        img{
+                            width: 150px;
+                            height: auto;
+                            border-radius: 5px;
+                        }
+                    }
+                }
+                .alert{
+                    margin-top: 10px;
+                    margin-left: -30px;
+                    display: flex;
+                    flex-direction: row;
+                    h4{
+                        width: 380px;
+                        text-align: center;
+                        color: #ffffff;
+                        background-color: #000000b6;
+                        border-radius: 15px;
+                        padding: 15px;
+                    }
+                    .btn-eliminar{
+                        background-color: #000000;
+                        border: 2px solid #ffffff;
+                        color: #ffffff;
+                        text-transform: uppercase;
+                        font-size: 16px;
+                        border-radius: 45px;
+                        padding: 15px 20px;
+                        align-items: center;
+                        margin-bottom: 10px;
+                        width: 125px;
+                        height: 55px;
+                        margin-left: 20px;
+                        svg{
+                            margin-left: 15px;
+                            font-size: 18px;
+                        }
+                        &:hover{
+                            background-color: #c40000;
+                            border: #c40000 2px solid;
+                            transition: 0.5s;
+                        }
+                    }
+                    .btn-cancelar{
+                        background-color: #000000;
+                        border: 2px solid #ffffff;
+                        color: #ffffff;
+                        text-transform: uppercase;
+                        font-size: 16px;
+                        border-radius: 45px;
+                        padding: 15px 20px;
+                        align-items: center;
+                        margin-bottom: 10px;
+                        width: 125px;
+                        height: 55px;
+                        margin-left: 20px;
+                        svg{
+                            margin-left: 15px;
+                            font-size: 18px;
+                        }
+                        &:hover{
+                            background-color: #308101;
+                            border: #308101 2px solid;
+                            transition: 0.5s;
+                        }
+                    }
+                }
+                
+                .eliminado{
+                    h3{
+                        display: flex;
+                        width: 440px;
+                        text-align: center;
+                        color: #ffffff;
+                        background-color: #000000b6;
+                        border-radius: 15px;
+                        padding: 15px;
+                        svg{
+                            color: #55e004;
+                            margin-left: 20px;
+                            margin-top: 4px;
+                        }
+                    }
+                    .texto-boton{
+                        display: flex;
+                        h4{
+                            width: 350px;
+                            text-align: center;
+                            color: #ffffff;
+                            background-color: #000000b6;
+                            border-radius: 15px;
+                            padding: 15px;
+                            margin-top: 20px;
+                        }
+                        button{
+                            background-color: #000000;
+                            border: 2px solid #ffffff;
+                            color: #ffffff;
+                            text-transform: uppercase;
+                            font-size: 16px;
+                            border-radius: 45px;
+                            padding: 15px 20px;
+                            align-items: center;
+                            margin-bottom: 10px;
+                            width: 125px;
+                            height: 55px;
+                            margin-left: 20px;
+                            margin-top: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

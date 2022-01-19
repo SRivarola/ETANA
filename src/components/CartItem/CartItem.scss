@@ -1,0 +1,60 @@
+.product{
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+    margin-left: 100px;
+    .img-container{
+
+        img{
+            width: 250px;
+            padding: 10px;
+            border-radius: 15px;
+        }
+    }
+    .txt-container{
+        width: 250px;
+        .name{
+            padding-top: 30px;
+            font-weight: bolder;
+        }
+        .mod-talle{
+            display: flex;
+            flex-direction: row;
+            .modelo{
+                width: 125px;
+                font-weight: bolder;
+            }
+            .talle{
+                width: 125px;
+                font-weight: bolder;
+            }
+        }
+        .pre-cant{
+            display: flex;
+            flex-direction: row;
+            .precio{
+                width: 125px;
+                font-weight: bolder;
+            }
+            .cantidad{
+                width: 125px;
+                font-weight: bolder;
+            }
+        }
+        .precioTotal{
+            width: 250px;
+            text-align: left;
+            font-weight: bolder;
+        }
+        button{
+            border: none;
+            color: #ffffff;
+            background-color: #000000;
+            border-radius: 5px;
+            padding-left: 10px;
+            padding-right:10px;
+            width: 230px;
+        }
+    }
+
+}

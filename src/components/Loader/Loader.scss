@@ -1,0 +1,19 @@
+.loader {
+    width: 100%;
+    height: 100%;
+    padding-top: 300px;
+    display: flex;
+    flex-direction: column;
+    .loader-txt {
+        align-self: center;
+    }
+    .spiner { 
+        align-self: center;
+        width: 70px;
+        height: 70px;
+    }
+}
+
+
+
+

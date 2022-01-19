@@ -1,0 +1,154 @@
+.ItemCount {
+    .btn{
+        font-family: 'Lato', sans-serif;
+        background-color: #000000;
+        color: #ffffff;
+        text-transform: uppercase;
+        font-size: 14px;
+        border-radius: 45px;
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        height: 60px;
+		margin-bottom: 10px;
+        .btn-carrito{
+            margin-left: 10px;
+            font-size: 22px;
+        }
+        &:hover{
+            .btn-carrito{
+                margin-left: 15px;
+                transition: 0.5s;
+            }
+        }
+    }
+
+	&__buttons {
+		margin: 20px 0;
+		display: flex;
+		align-items: center;
+
+		.btn_quantity {
+			border-radius: 50%;
+			width: 50px;
+			height: 50px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			svg {
+				stroke: #ffffff;
+			}
+		}
+       
+
+		.btn_quantity--quit {
+			background-color: #000000;
+			transform: rotate(90deg);
+		}
+
+		.btn_quantity--add {
+			background-color: #000000;
+			transform: rotate(-90deg);
+		}
+
+		span {
+			display: inline-block;
+			font-weight: bolder;
+			font-size: 18px;
+			background-color: #dbdbdb;
+			color: black;
+			padding: 15px 30px;
+			margin: 0 10px;
+			border-radius: 35px;;
+		}
+	}
+}
+
+// .count-container{
+//     margin: 0 auto;
+//     width: 100%;
+//     border: none;
+//     .itemcount{
+//         width: 90px;
+//         display: flex;
+//         flex-direction: row;
+//         height: 37px;
+//         margin: 0 auto;
+//         background-color: white;
+//         color: black;
+//         border-radius: 5px;
+//         border: 1px solid black;
+//         margin-right: 90px;
+//         .btn-rest{
+//             color: black;
+//             background-color: transparent;
+//             width: 30px;
+//             height: 37px;
+//             border: none;
+//             border-radius: 5px;
+//             font-weight: bolder;
+//             font-size: 20px;
+//             margin-top: -1px;
+//             &:disabled{
+//                 color: grey;
+//                 &:hover{
+//                     color: grey;
+//                 }
+//             }
+//             &:hover{
+//                 color: #0418cf;
+//             }
+//         }
+//         .numberDisplay{
+//             background-color: transparent;
+//             text-align: center;
+//             color: black;
+//             width: 30px;
+//             height: 37px;
+//             padding: 5px;
+//             font-size: 20px;
+//         }
+//         .btn-add{
+//             color: black;
+//             background-color: transparent;
+//             width: 30px;
+//             height: 37px;
+//             border: none;
+//             border-radius: 5px;
+//             font-weight: bolder;
+//             font-size: 20px;
+//             margin-top: -1px;
+//             &:hover{
+//                 color: #0418cf;
+//             }
+//             &:disabled{
+//                 color: grey;
+//                 &:hover{
+//                     color: grey;
+//                 }
+//             }
+//         }
+//     }
+//     .alert{
+//         margin-top: 5px;
+//         justify-content: center;
+//         margin-bottom: 0px;
+//         height: 50px;
+//     }
+//     .btnAddItem{
+//         color: white;
+//         border: none;
+//         border-radius: 5px;
+//         background-color: black;
+//         width: 200px;
+//         margin-bottom: 5px;
+//         margin-top: 15px;
+//         margin-left: -120px;
+//         font-size: 18px;
+//     }
+// }
+
+
+
