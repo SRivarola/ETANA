@@ -37,8 +37,8 @@ const CartContextProvider = ({children}) => {
                 localStorage.setItem('cart', JSON.stringify([...filtroId, ...filtroTalle, talleDuplicado]))
             }
         } else {
-            setCart([...cart, {id: product.id, model: product.model, name: product.name, price: product.price, img: product.img,imgSlide: product.imgSlide, cantidad: count, talle: isTalle}]);
-            localStorage.setItem('cart', JSON.stringify([...cart, {id: product.id, model: product.model, name: product.name, price: product.price, img: product.img, cantidad: count, talle: isTalle}]))
+            setCart([{id: product.id, model: product.model, name: product.name, price: product.price, img: product.img, imgSlide: product.imgSlide, cantidad: count, talle: isTalle}]);
+            localStorage.setItem('cart', JSON.stringify([{id: product.id, model: product.model, name: product.name, price: product.price, img: product.img, cantidad: count, talle: isTalle, agregado: 'me agrega datos?'}]))
         }
         
     }

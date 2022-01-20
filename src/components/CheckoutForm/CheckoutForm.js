@@ -7,7 +7,7 @@ import { collection, addDoc, Timestamp, writeBatch, getDocs, query, where, docum
 import Loader from '../Loader/Loader';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import CheckoutResume from '../CheckoutResume/CheckoutResume';
+// import CheckoutResume from '../CheckoutResume/CheckoutResume';
 
 const initialValues = ({
     nombre: '',
@@ -67,18 +67,22 @@ export default function CheckoutForm() {
     const { cart, totalCompra, vaciarCarrito } = useContext(CartContext);
     const [orderId, setOrderId] = useState(null);
     const [loading, setLoading] = useState(false);
-    const navigate = useNavigate();   
-   
+    const navigate = useNavigate();
+    
     const handleSubmit = (values) => {
 
         const order = {
-            buyer: values,
+            buyer: {
+                nombre: values.nombre + ' ' + values.apellido,
+                direccion: values.direccion,
+                cp: values.cp,
+                tel: values.tel,
+                mail: values.email,
+            },
             item: cart,
             total: totalCompra(),
             date: Timestamp.fromDate( new Date() )
         }
-
-        console.log(order)
 
         const batch = writeBatch(db);
         const ordersRef = collection(db, 'ordenes');
@@ -303,7 +307,7 @@ export default function CheckoutForm() {
                         )}
                     </Formik>
                     </section>
-                    <CheckoutResume />
+                    {/* <CheckoutResume /> */}
                 </div>
             }
         </div>
