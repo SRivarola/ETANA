@@ -1,0 +1,41 @@
+.compraRegistrada{
+    margin-top: 150px;
+    background-color: #000000af;
+    padding: 15px;
+    border-radius: 15px;
+    h2{
+        margin: 20px;
+        width: 100%;
+        text-align: center;
+        color: #ffffff;
+    }
+    h3{
+        width: 100%;
+        text-align: center;
+        color: #ffffff;
+        .ordenId{
+            color: #ffffff;
+            font-weight: bolder;
+            padding-left: 5px;
+        }
+    }
+    .volver{
+        width: 100%;
+        display: flex;
+        .btn-volver{
+            font-family: 'Lato', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            border-radius: 45px;
+            padding: 15px 20px;
+            margin: 0 auto;
+            text-decoration: none;
+            margin-top: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            width: 120px;
+            text-align: center;
+        }
+}
+}

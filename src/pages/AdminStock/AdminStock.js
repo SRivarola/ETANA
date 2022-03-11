@@ -3,7 +3,7 @@ import './AdminStock.scss';
 import { db } from '../../firebase/config';
 import { collection, getDocs, doc, getDoc, updateDoc } from 'firebase/firestore/lite';
 import { FiUpload } from 'react-icons/fi'
-import OptionList from '../../components/administrador/OptionList';
+import OptionList from '../../components/Administrador/OptionList';
 import Loader from '../../components/Loader/Loader';
 
 export default function AdminStock() {

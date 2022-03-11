@@ -1,5 +1,5 @@
 .adminPrecio{
-    margin-top: 180px;
+    margin-top: 200px;
     .titulo{
         width: 100%;
         display: flex;
@@ -8,7 +8,19 @@
             width: 300px;
             text-align: center;
             color: #ffffff;
-            background-color: #000000b6;
+            background-color: #000000da;
+            border-radius: 15px;
+            padding: 15px;
+        }
+    }
+    .subTitulo{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        h4{
+            color: #ffffff;
+            text-align: center;
+            background-color: #000000da;
             border-radius: 15px;
             padding: 15px;
         }
@@ -75,6 +87,7 @@
                 height: 180px;
                 width: auto;
                 border-radius: 5px;
+                border: 2px #161616 solid;
             }
             .texto{
                 height: 180px;

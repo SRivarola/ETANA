@@ -1,8 +1,9 @@
 .GifSection {
-	height: 800px;
+	height: auto;
 	background-image: url(../../assets/img/im2.jpg);
-	background-size: cover;
+	background-size: contain;
 	background-position: center;
+	background-repeat: no-repeat;
 	background-attachment: fixed;
 
 	color: white;

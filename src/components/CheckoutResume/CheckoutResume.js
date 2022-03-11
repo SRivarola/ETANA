@@ -15,12 +15,12 @@ export default function CheckoutResume() {
                     </header>
                     <ul>
                         <li><span>Orden de compra: </span><span>{`$${totalCompra()}`}</span></li>
-                        <li><span>Costo de envio: </span><span>aca iria costo de envio</span></li>
+                        <li><span>Costo de envío: </span><span>acá iría costo de envío</span></li>
                     </ul>
                     <hr/>
                     <footer>
                         <ul>
-                            <li><span>Total: </span><span>aca iria el monto total con el envio</span></li>
+                            <li><span>Total: </span><span>acá iría el monto total con el envío</span></li>
                         </ul>
                     </footer>
                 </article>
@@ -28,15 +28,15 @@ export default function CheckoutResume() {
             <section className='resume__feature'>
                 <FiTruck/>
                 <article>
-                    <header>Envio por correo</header>
-                    <footer>El envio es seguro y rapido.</footer>
+                    <header>Envío por correo</header>
+                    <footer>El envío es seguro y rápido.</footer>
                 </article>
             </section>
             <section className='resume__feature'>
                 <FiCreditCard/>
                 <article>
-                    <header>Metodo de pago</header>
-                    <footer>MERCADOPAGO en todo el pais o EFECTIVO solo en CABA.</footer>
+                    <header>Método de pago</header>
+                    <footer>MERCADOPAGO en todo el país o EFECTIVO solo en CABA.</footer>
                 </article>
             </section>
         </section>

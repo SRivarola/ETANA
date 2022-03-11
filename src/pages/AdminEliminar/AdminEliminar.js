@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './AdminEliminar.scss';
 import { db } from '../../firebase/config';
 import { collection, getDocs, getDoc, doc, deleteDoc } from 'firebase/firestore/lite';
-import OptionList from '../../components/administrador/OptionList';
+import OptionList from '../../components/Administrador/OptionList';
 import Loader from '../../components/Loader/Loader';
 import { FiCheckCircle } from 'react-icons/fi';
 

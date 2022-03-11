@@ -16,6 +16,11 @@ export default function NavBarContainer() {
     return (
         <>
         <header className="header">
+            <div className='banner'>
+                <p className="b1">ENVÍO GRATUITO - CABA</p>
+                <p className="b2">ENVÍO GRATUITO - CABA</p>
+                <p className="b3">ENVÍO GRATUITO - CABA</p>
+            </div>
             <nav className="barraNav">
                 <div className="primeraparte">
                 </div>
@@ -49,9 +54,10 @@ export default function NavBarContainer() {
                 <div className='barra-admin'>
                     <div className='container'>
                         <button className='btn-stock' onClick={ () => navigate('/admin/stock') }>CARGAR STOCK</button>
-                        <button className='btn-precio' onClick={ () => navigate('/admin/precio') }>MODIFICAR PRECIO</button>
+                        <button className='btn-precio' onClick={ () => navigate('/admin/precio') }>MODIFICAR PRECIO / %OFF</button>
                         <button className='btn-producto' onClick={ () => navigate('/admin/producto') }>AGREGAR PRODUCTO</button>
                         <button className='btn-eliminar' onClick={ () => navigate('/admin/eliminar') }>ELIMINAR PRODUCTO</button>
+                        <button className='btn-entregas' onClick={ () => navigate('/admin/entregas') }>ENTREGAS</button>
                     </div>
                 </div>
             }

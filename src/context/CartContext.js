@@ -9,7 +9,6 @@ const CartContextProvider = ({children}) => {
     }
     const cartInit = JSON.parse(localStorage.getItem('cart'));
     const [cart, setCart] = useState(cartInit);
-    
 
     const addItem = (product, count, isTalle) => {
         if(cart.length > 0) {
@@ -22,13 +21,25 @@ const CartContextProvider = ({children}) => {
             }
             let talleDuplicado = cart.find(finderTalle)
             if(idDuplicado === undefined){
-                setCart([...cart, {id: product.id, model: product.model, name: product.name, price: product.price, img: product.img, imgSlide: product.imgSlide, cantidad: count, talle: isTalle}])
-                localStorage.setItem('cart', JSON.stringify([...cart, {id: product.id, model: product.model, name: product.name, price: product.price, img: product.img, imgSlide: product.imgSlide, cantidad: count, talle: isTalle}]))
+                if(product.disc) {
+                    let nuevoPrecio = product.price - product.price * product.disc / 100;
+                    setCart([...cart, {id: product.id, model: product.model, name: product.name, price: nuevoPrecio, img: product.img, imgSlide: product.imgSlide, cantidad: count, talle: isTalle}])
+                    localStorage.setItem('cart', JSON.stringify([...cart, {id: product.id, model: product.model, name: product.name, price: nuevoPrecio, img: product.img, imgSlide: product.imgSlide, cantidad: count, talle: isTalle}]))
+                } else {
+                    setCart([...cart, {id: product.id, model: product.model, name: product.name, price: product.price, img: product.img, imgSlide: product.imgSlide, cantidad: count, talle: isTalle}])
+                    localStorage.setItem('cart', JSON.stringify([...cart, {id: product.id, model: product.model, name: product.name, price: product.price, img: product.img, imgSlide: product.imgSlide, cantidad: count, talle: isTalle}]))
+                }
             } else if (idDuplicado && talleDuplicado === undefined) {
                 const idFiltrados = cart.filter(item => item.id !== product.id)
                 const talleFiltrados = cart.filter(item => item.id === product.id && item.talle !== isTalle)
-                setCart([...idFiltrados, ...talleFiltrados, {id: product.id, model: product.model, name: product.name, price: product.price, img: product.img, imgSlide: product.imgSlide, cantidad: count, talle: isTalle}])
-                localStorage.setItem('cart', JSON.stringify([...idFiltrados, ...talleFiltrados, {id: product.id, model: product.model, name: product.name, price: product.price, img: product.img, imgSlide: product.imgSlide, cantidad: count, talle: isTalle}]))
+                if(product.disc){
+                    let nuevoPrecio = product.price - product.price * product.disc / 100;
+                    setCart([...idFiltrados, ...talleFiltrados, {id: product.id, model: product.model, name: product.name, price: nuevoPrecio, img: product.img, imgSlide: product.imgSlide, cantidad: count, talle: isTalle}])
+                    localStorage.setItem('cart', JSON.stringify([...idFiltrados, ...talleFiltrados, {id: product.id, model: product.model, name: product.name, price: nuevoPrecio, img: product.img, imgSlide: product.imgSlide, cantidad: count, talle: isTalle}]))
+                } else {
+                    setCart([...idFiltrados, ...talleFiltrados, {id: product.id, model: product.model, name: product.name, price: product.price, img: product.img, imgSlide: product.imgSlide, cantidad: count, talle: isTalle}])
+                    localStorage.setItem('cart', JSON.stringify([...idFiltrados, ...talleFiltrados, {id: product.id, model: product.model, name: product.name, price: product.price, img: product.img, imgSlide: product.imgSlide, cantidad: count, talle: isTalle}]))
+                }
             } else {
                 const filtroId = cart.filter(item => item.id !== product.id)
                 const filtroTalle = cart.filter(item => item.id === product.id && item.talle !== isTalle)
@@ -37,8 +48,14 @@ const CartContextProvider = ({children}) => {
                 localStorage.setItem('cart', JSON.stringify([...filtroId, ...filtroTalle, talleDuplicado]))
             }
         } else {
-            setCart([{id: product.id, model: product.model, name: product.name, price: product.price, img: product.img, imgSlide: product.imgSlide, cantidad: count, talle: isTalle}]);
-            localStorage.setItem('cart', JSON.stringify([{id: product.id, model: product.model, name: product.name, price: product.price, img: product.img, cantidad: count, talle: isTalle, agregado: 'me agrega datos?'}]))
+            if(product.disc){
+                let nuevoPrecio = product.price - product.price * product.disc / 100;
+                setCart([{id: product.id, model: product.model, name: product.name, price: nuevoPrecio, img: product.img, imgSlide: product.imgSlide, cantidad: count, talle: isTalle}]);
+                localStorage.setItem('cart', JSON.stringify([{id: product.id, model: product.model, name: product.name, price: nuevoPrecio, img: product.img, cantidad: count, talle: isTalle, agregado: 'me agrega datos?'}]))
+            } else {
+                setCart([{id: product.id, model: product.model, name: product.name, price: product.price, img: product.img, imgSlide: product.imgSlide, cantidad: count, talle: isTalle}]);
+                localStorage.setItem('cart', JSON.stringify([{id: product.id, model: product.model, name: product.name, price: product.price, img: product.img, cantidad: count, talle: isTalle, agregado: 'me agrega datos?'}]))
+            }
         }
         
     }

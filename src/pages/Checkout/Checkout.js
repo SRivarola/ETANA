@@ -3,6 +3,8 @@ import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CartContext } from '../../context/CartContext'
 import CheckoutForm from '../../components/CheckoutForm/CheckoutForm'
+import CheckoutResume from '../../components/CheckoutResume/CheckoutResume'
+
 
 export default function Checkout() {
 
@@ -22,8 +24,9 @@ export default function Checkout() {
                     <h1 className='titulo'>CHECKOUT</h1>
                 </div>
             </div>
-            <div className='container'>
+            <div className='container grid'>
                 <CheckoutForm />
+                <CheckoutResume />
             </div>
         </section>
     )

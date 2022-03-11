@@ -4,6 +4,9 @@ import ItemDetail from '../../components/ItemDetail/ItemDetail'
 import { db } from '../../firebase/config';
 import { doc, getDoc } from 'firebase/firestore/lite';
 import Loader from '../../components/Loader/Loader';
+import Footer from '../../components/Footer/Footer'
+import CopyRight from '../../components/CopyRight/CopyRight'
+
 
 export default function ItemDetailContainer() {
 
@@ -31,8 +34,14 @@ export default function ItemDetailContainer() {
             {
                 loading
                 ? <Loader/>
-                : detail !== undefined && <ItemDetail product={detail}/>
+                : detail !== undefined &&
+                <> 
+                    <ItemDetail product={detail}/>
+                    <Footer />
+                    <CopyRight />
+                </>
             }
+             
         </>
     )
 }

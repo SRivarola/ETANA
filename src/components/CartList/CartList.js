@@ -16,7 +16,7 @@ export default function CartList() {
                     <tr>
                         <th></th>
                         <th>Precio por Unidad</th>
-                        <th>Información</th>
+                        <th>Productos</th>
                         <th>Cantidad</th>
                         <th>Subtotal</th>
                     </tr>

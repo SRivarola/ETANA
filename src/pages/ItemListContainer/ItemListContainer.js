@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './ItemListContainer.scss';
 import ItemList from '../../components/ItemList/ItemList';
 import Loader from '../../components/Loader/Loader';
+// import Footer from '../../components/Footer/Footer'
 import { collection, getDocs } from 'firebase/firestore/lite';
 import { db } from '../../firebase/config';
 
@@ -29,16 +30,20 @@ export default function ItemListContainer() {
         <>
             <div className='container'>
                 <div className='container-titulo'>
-                    <h1 className='titulo'>NUESTRA SELECCION DE PRODUCTOS</h1>
+                    <h1 className='titulo'>NUESTRA SELECCIÓN DE PRODUCTOS</h1>
                 </div>
                 {
-                    loading
-                    ? <Loader />
-                    : <section className='itemListContainer'>
+                    loading 
+                    ?
+                    <Loader />
+                    : 
+                    <section className='itemListContainer'>
                         <ItemList items={product} />
+                        <br/>
                     </section>
                 }
             </div>
+            {/* <Footer /> */}
         </>
     )
 }

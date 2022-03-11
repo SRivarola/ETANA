@@ -1,0 +1,21 @@
+.politicas{
+    margin-top: 150px;
+    margin-bottom: 49px;
+    color: #ffffff;
+    background-color: #000000d7;
+    border-radius: 15px;
+    p{
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        h4{
+            margin-top: 20px;
+        }
+        h5{
+            margin-top: 20px;
+        }
+        span{
+            margin-top: 15px;
+        }
+    }
+}

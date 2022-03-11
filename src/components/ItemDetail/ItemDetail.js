@@ -10,6 +10,7 @@ import 'swiper/swiper.scss'
 import 'swiper/modules/navigation/navigation.scss'
 import 'swiper/modules/virtual/virtual.scss'
 import ReactPlayer from 'react-player';
+import ModalGuia from '../ModalGuia/ModalGuia';
 
 export default function ItemDetail({ product }) {
     
@@ -17,25 +18,26 @@ export default function ItemDetail({ product }) {
     const [talle, setTalle] = useState()
     const [hayStock, setHayStock] = useState(false);
     const [inStock, setInStock] = useState();
-    const [ imagesSlider, setImagesSlider ] = useState([])
+    const [imagesSlider, setImagesSlider] = useState([])
+    const [desc, setDesc] = useState([])
     const [adding, setAdding] = useState(false)
     const navigate = useNavigate();
 
     const {addItem} = useContext(CartContext);
     const imagenes = product.imgSlide;
+    const descripcion = product.description
 
     const handlerSetStock = (e) => {
-        var opcion = e.target.value;
-        if (product.stock[opcion] > 0){
+        if (product.stock[e.target.value] > 0){
             setHayStock(true);
-            setTalle(opcion);
-            setInStock(product.stock[opcion]);
+            setTalle(e.target.value);
+            setInStock(product.stock[e.target.value]);
         } else {
             setHayStock(false);
-            setInStock(product.stock[opcion]);
+            setInStock(product.stock[e.target.value]);
         }
     }
-    
+
     const onAdd = (count, product, talle) => {
         setQuantity(count)
         setAdding(true)
@@ -50,7 +52,7 @@ export default function ItemDetail({ product }) {
 
     const isAddingToCart = (adding) => {
 		if (adding) {
-			return <button type="btn" className="btn btn--loadedToCart">Loaded to cart <FiCheck/></button>
+			return <button type="btn" className="btn btn--loadedToCart">CARGANDO <FiCheck/></button>
 		} else {
 			return <ItemCount key={ 'agregarAlCarrito' } initial={1} stock={ inStock } onAdd={ onAdd } product={ product } quantity={ quantity } talle={ talle }/>
 		}
@@ -63,6 +65,14 @@ export default function ItemDetail({ product }) {
 			console.log(error)
 		}
 	}, [imagenes])
+
+    useEffect(() => {
+		try {
+            setDesc(Object.values(descripcion))
+		} catch (error){
+			console.log(error)
+		}
+	}, [descripcion])
 
     return (
         <section className="ItemDetail" >
@@ -104,23 +114,49 @@ export default function ItemDetail({ product }) {
                     <div className='nombre'>
                         <h1>{product.name}</h1>
                     </div>
-					<h2>$ {product.price.toLocaleString()}</h2>
+                    {
+                        product.disc 
+                        ?
+                        <h2>$ {((product.price) - (product.price * product.disc / 100)).toLocaleString() }</h2>
+                        :
+                        <h2>$ {product.price.toLocaleString()}</h2>
+                    }
 					<div>
 						<h3>Descripción</h3>
-						<p>{product.description}</p>
+                            <ul>
+                                {
+                                    desc &&
+                                    desc.map((e, i) => (
+                                        <li key={i}>{e}</li>
+                                    ))
+                                }
+                            </ul>
 					</div>
                     {
                         !quantity &&
                         <div className="ItemDetail__info__talle">
-                            <select onClick={ handlerSetStock } id='selTalles' className="form-select" name='talles' aria-label="Default select example">
-                                <option value='selected'>Elige un talle</option>
-                                <option value="36">36</option>
-                                <option value="37">37</option>
-                                <option value="38">38</option>
-                                <option value="39">39</option>
-                                <option value="40">40</option>
-                                <option value="41">41</option>
-                            </select>
+                                <p>Elige un talle:</p>
+                                <fieldset onClick={ handlerSetStock }>
+                                    <label>
+                                        36<input type="radio" name="color" value="36"/>
+                                    </label>
+                                    <label>
+                                        37<input type="radio" name="color" value="37"/>
+                                    </label>
+                                    <label>
+                                        38<input type="radio" name="color" value="38"/>
+                                    </label>
+                                    <label>
+                                        39<input type="radio" name="color" value="39"/>
+                                    </label>
+                                    <label>
+                                        40<input type="radio" name="color" value="40"/>
+                                    </label>
+                                    <label>
+                                        41<input type="radio" name="color" value="41"/>
+                                    </label>
+                                </fieldset>
+                        
                             {
                                 (inStock) && (inStock !== 0) && (quantity === undefined)? 
                                 <p className='enStock'>Stock:{inStock}</p>
@@ -128,18 +164,21 @@ export default function ItemDetail({ product }) {
                             }
                             {
                                 inStock === 0
-                                ? <p className='enStock'><span><FiAlertOctagon /></span>No hay Stock!</p>
+                                ? <p className='enStock'><span><FiAlertOctagon /></span>Sin stock!</p>
                                 : null
                             }
                         </div>
                     }
+                    <button type='button' className='btn-guia' data-bs-toggle='modal' data-bs-target='#modalGuia'>
+                        Guía de Talles
+                    </button>
                     {
                         hayStock && quantity === undefined && 
                         <div className='ItemDetail__info__itemcount'>
                             {
                                 isAddingToCart(adding) 
                             }
-                            </div>
+                        </div>
                     }
                     {
                         adding &&  isAddingToCart(adding)
@@ -149,6 +188,7 @@ export default function ItemDetail({ product }) {
                     }
 				</div>
 			</div>
+            <ModalGuia/>
 		</section>
                   
     )

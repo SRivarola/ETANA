@@ -4,8 +4,56 @@
     background-color: #161616;
     position: fixed;
     top: 0;
-    z-index: 5;
+    z-index: 999;
     box-shadow: 2px 2px 5px rgb(124, 124, 124);
+    .banner{
+        width: 100vw;
+        height: 18px;
+        .b1{
+            width: 100vw;
+            color: #ffffff;
+            animation-duration: 18s;
+            animation-name: slidein;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            position: absolute;
+        }
+        .b2{
+            width: 100vw;
+            color: transparent;
+            animation-duration: 18s;
+            animation-name: slidein;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            animation-delay: 6s;
+            height: 3px;
+            position: absolute;
+        }
+        .b3{
+            width: 100vw;
+            color: transparent;
+            animation-duration: 18s;
+            animation-name: slidein;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            animation-delay: 12s;
+            height: 3px;
+            position: absolute;
+        }
+    }
+    @keyframes slidein {
+        from {
+            color: #ffffff;
+            margin-left: 100%;
+            width: 300%
+        }
+      
+        to {
+            color: #ffffff;
+            margin-left: -12%;
+            width: 100%;
+        }
+      }
     .barraNav{
         width: 90%;
         height: 100px;
@@ -91,7 +139,7 @@
         text-align: center;
         font-size: 20px;
         margin-top: 8px;
-        width: 170px;
+        width: 120px;
         border-right: 1px solid white;
         font-style: italic;
     }
@@ -102,7 +150,7 @@
         text-align: center;
         font-size: 20px;
         margin-top: 8px;
-        width: 170px;
+        width: 200px;
         border-right: 1px solid white;
         font-style: italic;
     }
@@ -125,11 +173,25 @@
         font-size: 20px;
         margin-top: 8px;
         width: 170px;
+        border-right: 1px solid white;
+        font-style: italic;
+    }
+    .btn-entregas{
+        border: none;
+        background-color: transparent;
+        color: white;
+        text-align: center;
+        font-size: 20px;
+        margin-top: 8px;
+        width: 100px;
         font-style: italic;
     }
 }
 
 @media only screen and (max-width:768px){
+    .banner{
+        height: 10px !important;
+    }
     .primeraparte{
         width: 0% !important;
     }

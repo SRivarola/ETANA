@@ -13,13 +13,15 @@ export default function AdminProducto() {
     const [imgCero, setImgCero] = useState(null);
     const [imgUno, setImgUno] = useState(null);
     const [imgDos, setImgDos] = useState(null);
+    const [descripcion, setDescripcion] = useState()
     const [values, setValues] = useState({
         nombre: '',
         modelo: '', 
         precio: '', 
-        descripcion: '', 
+        description: {}, 
         stock: {36: '', 37: '',38: '', 39: '', 40: '', 41: ''},
-        img: ''
+        img: '',
+        disc: ''
     });
 
     async function handleFileChange(e) {
@@ -79,6 +81,20 @@ export default function AdminProducto() {
         })
     }
 
+    const handleDiscChange = (e) => {
+        if(e.target.value === 'null') {
+            setValues({
+                ...values,
+                disc: null
+            })
+        } else {
+            setValues({
+                ...values,
+                disc: Number(e.target.value)
+            })
+        }
+    }
+
     const handleStockChange = (e) => {
         setValues({
             ...values,
@@ -89,13 +105,22 @@ export default function AdminProducto() {
         })
     }
 
+    const handleDescriptionChange = (e) => {
+        if(e !== '') {
+            setDescripcion({
+                ...descripcion,
+                [e.target.name]: e.target.value
+            })
+        }
+    }
+
     async function handleSubmit(e) {
         e.preventDefault();
 
         if ((values.nombre !== '')
             && (values.modelo !== '')
             && (values.precio !== '')
-            && (values.descripcion !== '')
+            && (descripcion !== '')
             && (values.stock[36] !== '')
             && (values.stock[37] !== '')
             && (values.stock[38] !== '')
@@ -103,6 +128,7 @@ export default function AdminProducto() {
             && (values.stock[40] !== '')
             && (values.stock[41] !== '')
             && (values.img !== '')
+            && (values.disc !== '')
             && (imgCero)
             && (imgUno)
             && (imgDos)) {
@@ -112,7 +138,8 @@ export default function AdminProducto() {
                 addDoc(collectionRef, {
                     name: values.nombre,
                     price: Number(values.precio),
-                    description: values.descripcion,
+                    description: descripcion,
+                    disc: values.disc,
                     model: values.modelo,
                     img: values.img,
                     imgSlide: {
@@ -191,14 +218,128 @@ export default function AdminProducto() {
                                         name='precio'
                                     />
                                 </div>
-                                <textarea 
-                                    className='form-control my-2'
-                                    onChange={handleInputChange}
-                                    value={values.descripcion}
-                                    type='text'
-                                    placeholder='Descripcion'
-                                    name='descripcion'
-                                />
+                                <h4>Descripción: (los campos innecesarios dejarlos vacíos)</h4>
+                                <div className='input-group mb-3 description'>
+                                    <span className='input-group-text' id="inputGroup-sizing-default" >0</span>
+                                    <input
+                                        onChange={ handleDescriptionChange }
+                                        name={0}
+                                        type='text'
+                                        className='form-control'
+                                        aria-label="Sizing example input" 
+                                        aria-describedby="inputGroup-sizing-default"
+                                    />
+                                </div>
+                                <div className='input-group mb-3 description'>
+                                    <span className='input-group-text' id="inputGroup-sizing-default" >1</span>
+                                    <input
+                                        onChange={ handleDescriptionChange }
+                                        name={1}
+                                        type='text'
+                                        className='form-control'
+                                        aria-label="Sizing example input" 
+                                        aria-describedby="inputGroup-sizing-default"
+                                    />
+                                </div>
+                                <div className='input-group mb-3 description'>
+                                    <span className='input-group-text' id="inputGroup-sizing-default" >2</span>
+                                    <input
+                                        onChange={ handleDescriptionChange }
+                                        name={2}
+                                        type='text'
+                                        className='form-control'
+                                        aria-label="Sizing example input" 
+                                        aria-describedby="inputGroup-sizing-default"
+                                    />
+                                </div>
+                                <div className='input-group mb-3 description'>
+                                    <span className='input-group-text' id="inputGroup-sizing-default" >3</span>
+                                    <input
+                                        onChange={ handleDescriptionChange }
+                                        name={3}
+                                        type='text'
+                                        className='form-control'
+                                        aria-label="Sizing example input" 
+                                        aria-describedby="inputGroup-sizing-default"
+                                    />
+                                </div>
+                                <div className='input-group mb-3 description'>
+                                    <span className='input-group-text' id="inputGroup-sizing-default" >4</span>
+                                    <input
+                                        onChange={ handleDescriptionChange }
+                                        name={4}
+                                        type='text'
+                                        className='form-control'
+                                        aria-label="Sizing example input" 
+                                        aria-describedby="inputGroup-sizing-default"
+                                    />
+                                </div>
+                                <div className='input-group mb-3 description'>
+                                    <span className='input-group-text' id="inputGroup-sizing-default" >5</span>
+                                    <input
+                                        onChange={ handleDescriptionChange }
+                                        name={5}
+                                        type='text'
+                                        className='form-control'
+                                        aria-label="Sizing example input" 
+                                        aria-describedby="inputGroup-sizing-default"
+                                    />
+                                </div>
+                                <div className='input-group mb-3 description'>
+                                    <span className='input-group-text' id="inputGroup-sizing-default" >6</span>
+                                    <input
+                                        onChange={ handleDescriptionChange }
+                                        name={6}
+                                        type='text'
+                                        className='form-control'
+                                        aria-label="Sizing example input" 
+                                        aria-describedby="inputGroup-sizing-default"
+                                    />
+                                </div>
+                                <div className='input-group mb-3 description'>
+                                    <span className='input-group-text' id="inputGroup-sizing-default" >7</span>
+                                    <input
+                                        onChange={ handleDescriptionChange }
+                                        name={7}
+                                        type='text'
+                                        className='form-control'
+                                        aria-label="Sizing example input" 
+                                        aria-describedby="inputGroup-sizing-default"
+                                    />
+                                </div>
+                                <div className='input-group mb-3 description'>
+                                    <span className='input-group-text' id="inputGroup-sizing-default" >8</span>
+                                    <input
+                                        onChange={ handleDescriptionChange }
+                                        name={8}
+                                        type='text'
+                                        className='form-control'
+                                        aria-label="Sizing example input" 
+                                        aria-describedby="inputGroup-sizing-default"
+                                    />
+                                </div>
+                                <div className='input-group mb-3 description'>
+                                    <span className='input-group-text' id="inputGroup-sizing-default" >9</span>
+                                    <input
+                                        onChange={ handleDescriptionChange }
+                                        name={9}
+                                        type='text'
+                                        className='form-control'
+                                        aria-label="Sizing example input" 
+                                        aria-describedby="inputGroup-sizing-default"
+                                    />
+                                </div>
+                                <div className='input-group mb-3 description'>
+                                    <span className='input-group-text' id="inputGroup-sizing-default" >10</span>
+                                    <input
+                                        onChange={ handleDescriptionChange }
+                                        name={10}
+                                        type='text'
+                                        className='form-control'
+                                        aria-label="Sizing example input" 
+                                        aria-describedby="inputGroup-sizing-default"
+                                    />
+                                </div>
                                 <div className="mb-3 archivo">
                                     <label htmlFor="fotoPrincipal"><h4>Foto principal:</h4></label>
                                     <span className="input-group-text" id="inputGroup-sizing-default">Seleccionar archivo</span>
@@ -301,6 +442,18 @@ export default function AdminProducto() {
                                     <input
                                         onChange={ handleStockChange }
                                         name='41' 
+                                        type="text" 
+                                        className="form-control" 
+                                        aria-label="Sizing example input" 
+                                        aria-describedby="inputGroup-sizing-default"
+                                    />
+                                </div>
+                                <h4>%OFF:</h4>
+                                <div className="input-group mb-3 off">
+                                <span className="input-group-text" id="inputGroup-sizing-default">Si no hay descuento escribir: null</span>
+                                    <input
+                                        onChange={ handleDiscChange }
+                                        name='disc' 
                                         type="text" 
                                         className="form-control" 
                                         aria-label="Sizing example input" 

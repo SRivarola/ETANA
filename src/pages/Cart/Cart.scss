@@ -63,6 +63,9 @@
 			width: 100%;
 			display: flex;
 			justify-content: flex-end;
+			a{
+				text-decoration: none;
+			}
 			.btn {
 				font-family: 'Lato', sans-serif;
 				background-color: #ffffff;

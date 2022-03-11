@@ -1,0 +1,23 @@
+.feed{
+    margin-top: 50px;
+    margin-bottom: 60px;
+    &_greed{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        .feedInfo{
+            padding-left: 1.5px;
+            padding-right: 2px;
+            padding-top: 1.5px;
+            padding-bottom: 1px;
+            width: 100%;
+            .feedImg{
+                width: 100%;
+            }
+            .feedVideo{
+                video{
+                    margin-top: -2px;
+                }
+            }
+        }
+    }
+}

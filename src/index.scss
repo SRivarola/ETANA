@@ -14,6 +14,16 @@ body {
   src: url(fonts/OpenSansCondensed.ttf); 
 }
 
+@font-face {
+  font-family: Fiesta;
+  src: url(fonts/Fiesta.ttf); 
+}
+
+@font-face {
+  font-family: CR;
+  src: url(fonts/Boogaloo-Regular.ttf); 
+}
+
 @media (min-width: 1200px) {
 	.container {
 		width: 90%;

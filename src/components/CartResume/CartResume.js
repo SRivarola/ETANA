@@ -10,7 +10,7 @@ export default function CartResume({ totalCompra }) {
         <section className='Cart__resume'>
             <div className='info'>
                 <div className='resume'>
-                    <h3>INFORMACION DEL CARRITO</h3>
+                    <h3>INFORMACIÓN DEL CARRITO</h3>
                     <h4>TOTAL:<span>${total.toLocaleString()}</span></h4>
                 </div>
             </div>

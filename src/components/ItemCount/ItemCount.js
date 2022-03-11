@@ -44,7 +44,7 @@ export default function ItemCount({ onAdd, initial, stock, product, quantity, ta
                 className='btn' 
                 onClick={ () => onAdd(count, product, talle, quantity) } 
             >
-                AGREGAR AL CARRITO<span className='btn-carrito'><FiShoppingCart/></span>
+                AGREGAR A MI COMPRA<span className='btn-carrito'><FiShoppingCart/></span>
             </button> 
         </div>
     )
