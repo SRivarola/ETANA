@@ -164,7 +164,7 @@ export default function ItemDetail({ product }) {
                             }
                             {
                                 inStock === 0
-                                ? <p className='enStock'><span><FiAlertOctagon /></span>Sin stock!</p>
+                                ? <p className='enStock'><span><FiAlertOctagon /></span>Sin stock</p>
                                 : null
                             }
                         </div>

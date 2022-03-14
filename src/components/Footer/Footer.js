@@ -1,7 +1,8 @@
 import React from 'react'
 import './Footer.scss'
 import { useNavigate } from 'react-router-dom';
-import { AiFillInstagram, AiFillMail } from "react-icons/ai";
+import { AiFillInstagram } from "react-icons/ai";
+import { HiMail } from "react-icons/hi";
 import Terminos from '../ModalTerminos/Terminos';
 import ModalGuia from '../ModalGuia/ModalGuia';
 
@@ -28,7 +29,7 @@ export default function Footer() {
           <div className='contacto'>
             <h3>CONTACTANOS</h3>
             <div>
-              <h5><AiFillMail /><span>etanabaires@gmail.com</span></h5>
+              <h5><HiMail /><span>etanabaires@gmail.com</span></h5>
             </div>
             <div>
               <a href='https://instagram.com/etanabaires?utm_medium=copy_link' target='_blank'>

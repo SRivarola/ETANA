@@ -9,6 +9,8 @@ const CartContextProvider = ({children}) => {
     }
     const cartInit = JSON.parse(localStorage.getItem('cart'));
     const [cart, setCart] = useState(cartInit);
+    const [costoEnvio, setCostoEnvio] = useState()
+    const [envio, setEnvio] = useState(true)
 
     const addItem = (product, count, isTalle) => {
         if(cart.length > 0) {
@@ -80,6 +82,20 @@ const CartContextProvider = ({children}) => {
         return cart.reduce((acc, prod) => acc + prod.cantidad, 0)
     } 
 
+    const handleCostoEnvio = (e) => {
+        const valor = e.target.value;
+        const arrValue = valor.split(',');
+        setCostoEnvio(Number(arrValue[0]))
+    }
+
+    const handleRetiroEnvio = (e) => {
+        if(e.target.value === 'false'){
+            setEnvio(false)
+        } else if (e.target.value === 'true') {
+            setEnvio(true)
+        }
+    }
+
     return(
         <CartContext.Provider value={{ 
             cart, 
@@ -87,7 +103,11 @@ const CartContextProvider = ({children}) => {
             removerDelCarrito, 
             vaciarCarrito,
             totalCompra,
-            cantidadCarrito
+            cantidadCarrito,
+            costoEnvio,
+            handleCostoEnvio,
+            envio,
+            handleRetiroEnvio,
         }} >
             {children}
         </CartContext.Provider>

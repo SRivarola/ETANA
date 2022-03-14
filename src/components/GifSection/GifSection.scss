@@ -1,55 +1,45 @@
 .GifSection {
-	height: auto;
-	background-image: url(../../assets/img/im2.jpg);
-	background-size: contain;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-
+	width: 90%;
+	margin: 0 auto;
+	padding-top: 125px;
 	color: white;
 
 	&__info {
-		height: 800px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: flex-start;
-
-		h2 {
-			margin: 45px 0;
+		height: 1050px;
+    	display: grid;
+    	grid-template-columns: 1fr;
+		div{
+			width: 100%;
+			img{
+				width: 100%;
+			}
+		}
+		.foto2{
+			margin-top: -50px;
 		}
 	}
 }
-
-@media (min-width: 800px){
-	.HeroSection {
-
-		&__info {
-			width: 60%;
-		}
-	}
-}
-
-@media (min-width: 1200px){
-	.HeroSection {
-
-		&__info {
-			width: 30%;
-		}
-	}
-}
-
-
 
 @media only screen and (max-width:768px){
 	.GifSection {
-		margin-top: 100px;
+		padding-top: 110px !important;
 		width: 100% !important;
-		height: 200px !important;
-		background-image: url(../../assets/img/im2.jpg);
-		background-size: contain !important;
-		background-repeat: no-repeat;
-		background-position-y: top;
-		background-position-y: 100px;
+		height: 600px !important;
+		&__info {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 10px !important;
+			height: auto;
+			div{
+				width: 100%;
+				position: relative;
+				height: auto;
+				img{
+					position: relative;
+					width: 100%;
+					height: auto;
+				}
+			}
+		}
 	}
 }

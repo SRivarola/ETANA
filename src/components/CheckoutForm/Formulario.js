@@ -111,6 +111,10 @@ const SelectStyled = styled.select`
         outline: none;
         box-shadow: 3px 0px 10px rgba(163,163,163, 0.4);
     }
+
+    ${props => props.valido === 'true' && css`
+        border: 3px solid ${colores.exito} !important;
+    `}
 `;
 
 const Label = styled.label`

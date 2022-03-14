@@ -45,7 +45,7 @@ function App() {
                                                     <AdminEntregas/>
                                                   </RestrictedRoute>}/>
             <Route path='/devolucion' element={<PoliticaDevolucion/>}/>                                                                     
-            <Route path = "*" element={<Error />}/>                          
+            <Route path = "/*" element={<Error />}/>                          
           </Routes>
         </Router>
       </CartContextProvider>

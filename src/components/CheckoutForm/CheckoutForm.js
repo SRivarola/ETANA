@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { FiSend } from 'react-icons/fi';
 import { CartContext } from '../../context/CartContext';
@@ -16,7 +16,7 @@ import Radiobutton from './Radiobutton';
 
 export default function CheckoutForm() {
 
-    const { cart, totalCompra, vaciarCarrito } = useContext(CartContext);
+    const { cart, totalCompra, vaciarCarrito, handleCostoEnvio, handleRetiroEnvio } = useContext(CartContext);
     const [loading, setLoading] = useState(false);
     const [values, setValues] = useState({
         nombre: '',
@@ -27,7 +27,11 @@ export default function CheckoutForm() {
         cp: '',
         provincia: '',
         tel: '',
-        productos: cart,
+        nombreProducto: cart[0].name,
+        fotoProducto: cart[0].img,
+        talleProducto: cart[0].talle,
+        precioProducto: cart[0].price,
+        fotoProductoFrente: cart[0].imgSlide[0],
         costoEnvio: '',
         envio: true,
         terminos: false
@@ -80,7 +84,8 @@ export default function CheckoutForm() {
         if(e.target.value === 'false'){
             setValues({
                 ...values,
-                envio: false
+                envio: false,
+                costoEnvio: 0
             })
         } else if (e.target.value === 'true') {
             setValues({
@@ -88,6 +93,7 @@ export default function CheckoutForm() {
                 envio: true
             })
         }
+        handleRetiroEnvio(e)
     }
 
     const llamadaMercadoPago = async () => {
@@ -100,19 +106,19 @@ export default function CheckoutForm() {
                 category_id: "",
                 quantity: prod.cantidad,
                 currency_id: "ARS",
-                unit_price: prod.price
+                unit_price: prod.price + values.costoEnvio
             }
         })
 
         const response = await fetch('https://api.mercadopago.com/checkout/preferences', {
             method: 'POST',
             headers: {
-                Authorization: "Bearer TEST-2540897097355074-122201-79b9ba9d9b1d537f15966a98174f44ef-67353566"
+                Authorization: process.env.REACT_APP_MERCADOPAGO_ACCESSTOKEN
             },
             body: JSON.stringify({
                 items: itemsToMP,
                 back_urls: {
-                    success: ("http://localhost:3000/ordercomplete"),
+                    success: ("http://etanabaires.com"),
                     failure: window.location.href
                 }
 
@@ -138,17 +144,43 @@ export default function CheckoutForm() {
             costoEnvio: Number(arrValue[0]),
             provincia: arrValue[1]
         })
-        setError({
-            ...error,
-            provincia: 'true'
-        })
+        if(valor === 'undefined'){
+            setError({
+                ...error,
+                provincia: 'false'
+            })
+        } else {
+            setError({
+                ...error,
+                provincia: 'true'
+            })
+        }
+        handleCostoEnvio(e)
     }
 
-    console.log(values, error)
+    useEffect(() => {
+        if(cart.length > 1) {
+            setValues({
+                ...values,
+                nombreProducto2: cart[1].name,
+                fotoProducto2: cart[1].img,
+                talleProducto2: cart[1].talle,
+                precioProducto2: cart[1].price,
+                fotoProductoFrente2: cart[1].imgSlide[0],
+            })
+        }
+    }, [])
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        
+
+        if(values.envio === false) {
+            setValues({
+                ...values,
+                costoEnvio: 0
+            })
+        }
+
         if(
             error.nombre === 'true' &&
             error.apellido === 'true' &&
@@ -196,26 +228,58 @@ export default function CheckoutForm() {
                                 [itemInCart.talle]: doc.data().stock[itemInCart.talle] - itemInCart.cantidad
                             }
                         })
-                        if(values.envio === true){
-                            emailjs.send('service_azx9s5j', 'template_twzekie', values, 'v0lNPVS6GlqJPqBF8')
-                                .then(function(response) {
-                                    console.log('SUCCESS!', response.status, response.text);
-                                }, function(error) {
-                                    console.log('FAILED...', error);
-                                });
-                        } else if (values.envio === false) {
-                            emailjs.send('service_azx9s5j', 'template_twzekie', values, 'v0lNPVS6GlqJPqBF8')
-                                .then(function(response) {
-                                    console.log('SUCCESS!', response.status, response.text);
-                                }, function(error) {
-                                    console.log('FAILED...', error);
-                                });
-                        }
                     } else {
-                            outOfStock.push(itemInCart)
+                        outOfStock.push(itemInCart)
+                    }
+                })
+                if(outOfStock.length === 0) {
+                        if(values.envio === true){
+                            if(cart.length === 1) {
+                                emailjs.send('service_azx9s5j', 'template_ko7348m', values, 'BoA6Av32WkkcAeA9d')
+                                    .then(function(response) {
+                                        console.log('SUCCESS!', response.status, response.text);
+                                    }, function(error) {
+                                        console.log('FAILED...', error);
+                                    });
+                            } else if(cart.length === 2) {
+                                emailjs.send('service_4ugs4bt', 'template_2qf5tjm', values, 'YXR48jLbjnfWOEwK_')
+                                    .then(function(response) {
+                                        console.log('SUCCESS!', response.status, response.text);
+                                    }, function(error) {
+                                        console.log('FAILED...', error);
+                                    });
+                            } else if(cart.length > 2) {
+                                emailjs.send('service_rk9j69p', 'template_7b5scrd', values, 'cObqNkEMPW5b1JQEz')
+                                .then(function(response) {
+                                    console.log('SUCCESS!', response.status, response.text);
+                                }, function(error) {
+                                    console.log('FAILED...', error);
+                                });
+                            }
+                        } else if (values.envio === false) {
+                            if(cart.length === 1) {
+                                emailjs.send('service_azx9s5j', 'template_tleowf4', values, 'BoA6Av32WkkcAeA9d')
+                                    .then(function(response) {
+                                        console.log('SUCCESS!', response.status, response.text);
+                                    }, function(error) {
+                                        console.log('FAILED...', error);
+                                    });
+                            } else if(cart.length === 2) {
+                                emailjs.send('service_4ugs4bt', 'template_f4xsokh', values, 'YXR48jLbjnfWOEwK_')
+                                    .then(function(response) {
+                                        console.log('SUCCESS!', response.status, response.text);
+                                    }, function(error) {
+                                        console.log('FAILED...', error);
+                                    });
+                            } else if(cart.length > 2) {
+                                emailjs.send('service_rk9j69p', 'template_z92ieqd', values, 'cObqNkEMPW5b1JQEz')
+                                    .then(function(response) {
+                                        console.log('SUCCESS!', response.status, response.text);
+                                    }, function(error) {
+                                        console.log('FAILED...', error);
+                                    });
+                            }
                         }
-                    })
-                    if(outOfStock.length === 0) {
                         addDoc(ordersRef, order)
                             .then((res) => {
                                 sessionStorage.setItem('orderId', JSON.stringify(res.id))
@@ -233,7 +297,7 @@ export default function CheckoutForm() {
            
         }
     }
-
+    
     if(loading) {
         return <Loader />
     }
@@ -246,7 +310,7 @@ export default function CheckoutForm() {
                         <section className='Checkout__form'>
                             <header>
                                 <h3>Detalles de compra</h3>
-                                <h4>Complete el formulario</h4>
+                                <h4>Complete el formulario:</h4>
                             </header>
                                 <Formulario onSubmit={handleSubmit}>
                                     <Input 
@@ -340,7 +404,7 @@ export default function CheckoutForm() {
                                         valido={error.cp}
                                     />
                                   
-                                    <Select selectOnChange={handleSelectChange}/>
+                                    <Select selectOnChange={handleSelectChange} valido={error.provincia}/>
 
                                     <Radiobutton 
                                         estado={values}

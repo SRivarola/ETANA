@@ -1,6 +1,7 @@
 import React from 'react'
 import './PoliticaDevolucion.scss'
 import Footer from '../../components/Footer/Footer'
+import CopyRight from '../../components/CopyRight/CopyRight'
 
 export default function PoliticaDevolucion() {
   return (
@@ -27,6 +28,7 @@ export default function PoliticaDevolucion() {
             </p>
         </div>
         <Footer />
+        <CopyRight />
     </>
   )
 }
