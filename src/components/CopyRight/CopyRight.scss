@@ -6,28 +6,23 @@
         grid-template-columns: 1fr;
         height: 30px;
         .misDatos{
-            display: flex;
-            flex-direction: row;
+            display: grid;
+            grid-template-columns: 3fr 1fr 3fr;
             margin: 0 auto;
             height: 30px;
             img{
                 margin-left: 8px;
                 margin-right: 8px;
+                height: 30px;
+            }
+            .primer{
+                text-align: right !important;
             }
             p{
                 font-family: CR;
                 padding-top: 3px;
                 height: 30px;
                 color: #000000;
-            }
-        }
-        .cr{
-            height: 30px;
-            p{
-                padding-top: 3px;
-                height: 30px;
-                color: #000000;
-                font-weight: bold;
             }
         }
     }
