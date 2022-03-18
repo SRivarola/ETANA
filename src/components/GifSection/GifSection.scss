@@ -3,9 +3,9 @@
 	margin: 0 auto;
 	padding-top: 125px;
 	color: white;
-
+	height: auto;
 	&__info {
-		height: 1050px;
+		height: auto;
     	display: grid;
     	grid-template-columns: 1fr;
 		div{
@@ -14,8 +14,8 @@
 				width: 100%;
 			}
 		}
-		.foto2{
-			margin-top: -50px;
+		.fotoCel{
+			display: none;
 		}
 	}
 }
@@ -24,7 +24,7 @@
 	.GifSection {
 		padding-top: 110px !important;
 		width: 100% !important;
-		height: 600px !important;
+		height: auto !important;
 		&__info {
 			display: grid;
 			grid-template-columns: 1fr;
@@ -39,7 +39,25 @@
 					width: 100%;
 					height: auto;
 				}
+				.fotoCel{
+					display: flex !important;
+				}
+				.fotoWeb{
+					display: none !important;
+				}
 			}
 		}
+	}
+}
+
+@media (max-width: 512px) {
+	.GifSection{
+		.fotoCel{
+			display: flex !important;
+		}
+		.fotoWeb{
+			display: none !important;
+		}
+
 	}
 }

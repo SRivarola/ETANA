@@ -54,6 +54,7 @@ export default function NavBarContainer() {
                 <div className='barra-admin'>
                     <div className='container'>
                         <button className='btn-stock' onClick={ () => navigate('/admin/stock') }>CARGAR STOCK</button>
+                        <button className='btn-control' onClick={ () => navigate('/admin/control') }>CONTROL</button>
                         <button className='btn-precio' onClick={ () => navigate('/admin/precio') }>MODIFICAR PRECIO / %OFF</button>
                         <button className='btn-producto' onClick={ () => navigate('/admin/producto') }>AGREGAR PRODUCTO</button>
                         <button className='btn-eliminar' onClick={ () => navigate('/admin/eliminar') }>ELIMINAR PRODUCTO</button>

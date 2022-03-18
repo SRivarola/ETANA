@@ -1,6 +1,7 @@
 import React from 'react';
 
-const DatosItems = ({ name, talle, img, cantidad }) => {
+const DatosItems = ({ name, talle, img, cantidad, precio }) => {
+    
     return (
         <div className='item'>
             <div className='datos'>

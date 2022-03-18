@@ -7,10 +7,6 @@ export default function Item({ id, name, price, img, video, disc}) {
 
     const navigate = useNavigate();
 
-    // function discount() {
-    //     price - d
-    // }
-
     return (
         <div className='Item'>
             {

@@ -124,6 +124,8 @@ const Label = styled.label`
 
 const InputRadio = styled.input`
     margin-left: 5px;
+    margin-top: 16px;
+    position: relative;
 `;
 
 const inputCheck = styled.input`

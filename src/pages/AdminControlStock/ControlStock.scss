@@ -1,0 +1,16 @@
+.adminControl{
+    margin-top: 180px;
+    .titulo{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        h1{
+            width: 240px;
+            text-align: center;
+            color: #ffffff;
+            background-color: #000000b6;
+            border-radius: 15px;
+            padding: 15px;
+        }
+    }
+}

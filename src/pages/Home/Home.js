@@ -6,6 +6,7 @@ import Footer from '../../components/Footer/Footer'
 import CopyRight from '../../components/CopyRight/CopyRight'
 
 export default function Home() {
+
     return (
         <>
             <GifSection />

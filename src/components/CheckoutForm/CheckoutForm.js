@@ -21,6 +21,7 @@ export default function CheckoutForm() {
     const [values, setValues] = useState({
         nombre: '',
         apellido: '',
+        dni: '',
         direccion: '',
         email: '',
         confirmEmail: '',
@@ -39,6 +40,7 @@ export default function CheckoutForm() {
     const [error, setError] = useState({
         nombre: null,
         apellido: null,
+        dni: null,
         direccion: null,
         email: null,
         confirmEmail: null,
@@ -54,7 +56,8 @@ export default function CheckoutForm() {
         direccion: /^[a-zA-Z0-9]{2,30}$/, // Letras, numeros
         email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
         cp: /^.{3,8}$/, // 3 a 8 digitos.
-        tel: /^\d{7,14}$/ // 7 a 14 numeros.
+        tel: /^\d{7,14}$/, // 7 a 14 numeros.
+        dni: /^\d{7,14}$/ // 7 a 14 numeros.
     }
 
     const validarEmail = () => {
@@ -184,6 +187,7 @@ export default function CheckoutForm() {
         if(
             error.nombre === 'true' &&
             error.apellido === 'true' &&
+            error.dni === 'true' &&
             error.direccion === 'true' &&
             error.email === 'true' &&
             error.confirmEmail === 'true' &&
@@ -196,6 +200,7 @@ export default function CheckoutForm() {
             const order = {
                 buyer: {
                     nombre: values.nombre + ' ' + values.apellido,
+                    dni: values.dni,
                     direccion: values.direccion,
                     cp: values.cp,
                     provincia: values.provincia,
@@ -203,7 +208,7 @@ export default function CheckoutForm() {
                     mail: values.email,
                 },
                 item: cart,
-                total: totalCompra(),
+                total: totalCompra() + values.costoEnvio,
                 date: Timestamp.fromDate( new Date() )
             }
             
@@ -297,6 +302,7 @@ export default function CheckoutForm() {
            
         }
     }
+    console.log(values, error)
     
     if(loading) {
         return <Loader />
@@ -319,7 +325,7 @@ export default function CheckoutForm() {
                                         inputType='text' 
                                         inputPlaceholder='Nombre' 
                                         inputName='nombre' 
-                                        textError={'Debe completar el NOMBRE correctamente'}
+                                        textError={'Debe completar el NOMBRE correctamente.'}
                                         estado={error}
                                         cambiarEstado={setError}
                                         condiciones={condiciones.nombre}
@@ -331,7 +337,7 @@ export default function CheckoutForm() {
                                         inputType='text' 
                                         inputPlaceholder='Apellido' 
                                         inputName='apellido' 
-                                        textError={'Debe completar el APELLIDO correctamente'}
+                                        textError={'Debe completar el APELLIDO correctamente.'}
                                         valor={values.apellido}
                                         estado={error}
                                         cambiarEstado={setError}
@@ -340,11 +346,37 @@ export default function CheckoutForm() {
                                     />
 
                                     <Input 
+                                         inputOnChange={handleChange} 
+                                         inputType='text' 
+                                         inputPlaceholder='Documento de identidad' 
+                                         inputName='dni' 
+                                         textError={'Debe completar el solo números.'}
+                                         valor={values.dni}
+                                         estado={error}
+                                         cambiarEstado={setError}
+                                         condiciones={condiciones.dni}
+                                         valido={error.dni}
+                                    />
+
+                                    <Input 
+                                        inputOnChange={handleChange} 
+                                        inputType='text' 
+                                        inputPlaceholder='Celular ej:(1150001122)' 
+                                        inputName='tel' 
+                                        textError={'Debe completar el NUMERO correctamente.'}
+                                        valor={values.tel}
+                                        estado={error}
+                                        cambiarEstado={setError}
+                                        condiciones={condiciones.tel}
+                                        valido={error.tel}
+                                    />
+
+                                    <Input 
                                         inputOnChange={handleChange} 
                                         inputType='email' 
                                         inputPlaceholder='Email' 
                                         inputName='email' 
-                                        textError={'Debe completar el EMAIL correctamente'}
+                                        textError={'Debe completar el EMAIL correctamente.'}
                                         valor={values.email}
                                         estado={error}
                                         cambiarEstado={setError}
@@ -357,33 +389,20 @@ export default function CheckoutForm() {
                                         inputType='email' 
                                         inputPlaceholder='Confirmar email' 
                                         inputName='confirmEmail' 
-                                        textError={'El correo de confirmación es incorrecto'}
+                                        textError={'El correo de confirmación es incorrecto.'}
                                         valor={values.confirmEmail}
                                         estado={error}
                                         cambiarEstado={setError}
                                         funcion={validarEmail}
                                         valido={error.confirmEmail}
                                     />
-                                   
-                                    <Input 
-                                        inputOnChange={handleChange} 
-                                        inputType='text' 
-                                        inputPlaceholder='Celular ej:(1150001122)' 
-                                        inputName='tel' 
-                                        textError={'Debe completar el NUMERO correctamente'}
-                                        valor={values.tel}
-                                        estado={error}
-                                        cambiarEstado={setError}
-                                        condiciones={condiciones.tel}
-                                        valido={error.tel}
-                                    />
-                                  
+                                
                                     <Input 
                                         inputOnChange={handleChange} 
                                         inputType='text' 
                                         inputPlaceholder='Domicilio' 
                                         inputName='direccion' 
-                                        textError={'Debe completar la DIRECCIÓN correctamente'}
+                                        textError={'Debe completar la DIRECCIÓN correctamente.'}
                                         valor={values.domicilio}
                                         estado={error}
                                         cambiarEstado={setError}
@@ -396,7 +415,7 @@ export default function CheckoutForm() {
                                         inputType='text' 
                                         inputPlaceholder='Código Postal' 
                                         inputName='cp' 
-                                        textError={'Debe completar el CÓDIGO POSTAL correctamente'}
+                                        textError={'Debe completar el CÓDIGO POSTAL correctamente.'}
                                         valor={values.cp}
                                         estado={error}
                                         cambiarEstado={setError}

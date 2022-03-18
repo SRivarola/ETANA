@@ -14,12 +14,14 @@ const AdminEntregas = () => {
     const [datos, setDatos] = useState({
         id: '',
         nombre: '',
+        dni: '',
         email: '',
         tel: '',
         direccion: '',
         cp: ''
     })
-    const [datosItems, setDatosItems] = useState([])
+    const [datosItems, setDatosItems] = useState([]);
+    const [datosPrecio, setDatosPrecio] = useState();
 
     useEffect(() => {
         setLoading(true)
@@ -38,7 +40,7 @@ const AdminEntregas = () => {
 
     const handleChangeProd = (e) => {
         if(e.target.value === 'undefined'){
-            setDatos({id: '', nombre: '', email: '', tel: '', direccion: '', cp: '', img: '', nombrebota: '', talle: ''});
+            setDatos({id: '', nombre: '', dni: '', email: '', tel: '', direccion: '', cp: '', img: '', nombrebota: '', talle: '', total: '',});
             setDatosItems([])
             setHayData(false)
         } else {
@@ -52,16 +54,18 @@ const AdminEntregas = () => {
                     setDatos({
                         id: e.target.value,
                         nombre: refData.buyer.nombre,
+                        dni: refData.buyer.dni,
                         email: refData.buyer.mail,
                         tel: refData.buyer.tel,
                         direccion: refData.buyer.direccion,
                         cp: refData.buyer.cp
                     })
-                    setDatosItems(refData.item)         
+                    setDatosItems(refData.item)
+                    setDatosPrecio(refData.total)        
                 })
         }
     }
-
+    console.log(datosPrecio)
     const handleSubmit = (e) =>{
         e.preventDefault();
         if(hayData) {
@@ -71,7 +75,7 @@ const AdminEntregas = () => {
             addDoc(entregadosRef, allData)
             deleteDoc(doc(db, 'ordenes', datos.id))
                 .then(() => {
-                    setDatos({id: '', nombre: '', email: '', tel: '', direccion: '', cp: '', img: '', nombrebota: '', talle: ''});
+                    setDatos({id: '', nombre: '', dni: '', email: '', tel: '', direccion: '', cp: '', img: '', nombrebota: '', talle: '', total: ''});
                     setDatosItems([])
                     setHayData(false)
                 })
@@ -108,6 +112,7 @@ const AdminEntregas = () => {
                                 <div className='comprador'>
                                     <h1>Datos del comprador</h1>
                                     <h3>Nombre: {datos.nombre}</h3>
+                                    <h3>DNI: {Number(datos.dni).toLocaleString()}</h3>
                                     <h3>Direccion: {datos.direccion}</h3>
                                     <h3>CP: {datos.cp}</h3>
                                     <h3>Email: {datos.email}</h3>
@@ -117,7 +122,8 @@ const AdminEntregas = () => {
                                     <h1>Datos de la compra</h1>
                                     {
                                         datosItems.map((item) => <DatosItems key={item.id} {...item}/> )
-                                    }
+                                    }        
+                                    <h3 className='pago'>Pago total: $<span>{Number(datosPrecio).toLocaleString()}</span></h3>
                                 </div>
                             </div>
                         }

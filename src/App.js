@@ -15,6 +15,7 @@ import AdminEliminar from './pages/AdminEliminar/AdminEliminar';
 import Ordercomplete from './components/OrderComplete/OrderComplete';
 import AdminEntregas from './pages/AdminEntregas/AdminEntregas';
 import PoliticaDevolucion from './pages/PoliticaDevolucion/PoliticaDevolucion';
+import ControlStock from './pages/AdminControlStock/ControlStock';
 
 function App() {
   return (
@@ -40,7 +41,10 @@ function App() {
                                                   </RestrictedRoute>}/>  
             <Route path='/admin/eliminar' element={<RestrictedRoute>
                                                     <AdminEliminar/>
-                                                  </RestrictedRoute>}/>  
+                                                  </RestrictedRoute>}/> 
+            <Route path='/admin/control' element={<RestrictedRoute>
+                                                    <ControlStock/>
+                                                  </RestrictedRoute>}/> 
             <Route path='/admin/entregas' element={<RestrictedRoute>
                                                     <AdminEntregas/>
                                                   </RestrictedRoute>}/>
