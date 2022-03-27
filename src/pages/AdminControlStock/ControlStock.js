@@ -9,6 +9,7 @@ export default function ControlStock() {
 
   const [loading, setLoading] = useState(false);
   const [product, setProduct] = useState([]);
+  const [stockTotal, setStockTotal] = useState()
 
   useEffect(() => {
     setLoading(true)
@@ -19,6 +20,7 @@ export default function ControlStock() {
         .then((resp) => {
             const prods = resp.docs.map((doc) => ({id: doc.id, ...doc.data()}))
             setProduct(prods)
+            setStockTotal(prods[0].stock[36] + prods[0].stock[37] + prods[0].stock[38] + prods[0].stock[39] + prods[0].stock[40] + prods[0].stock[41] + prods[1].stock[36] + prods[1].stock[37] + prods[1].stock[38] + prods[1].stock[39] + prods[1].stock[40] + prods[1].stock[41] + prods[2].stock[36] + prods[2].stock[37] + prods[2].stock[38] + prods[2].stock[39] + prods[2].stock[40] + prods[2].stock[41] + prods[3].stock[36] + prods[3].stock[37] + prods[3].stock[38] + prods[3].stock[39] + prods[3].stock[40] + prods[3].stock[41] + prods[4].stock[36] + prods[4].stock[37] + prods[4].stock[38] + prods[4].stock[39] + prods[4].stock[40] + prods[4].stock[41])
         })
         .finally( () => {
             setLoading(false)
@@ -39,6 +41,16 @@ export default function ControlStock() {
             <div className='stockList'>
               <StockList items={product} />
             </div>
+              <div className='totalStock'>
+                <h3>Total:
+                  <span>
+                  {
+                    stockTotal &&
+                    stockTotal
+                  }
+                  </span>
+                </h3>
+              </div>
         </>
       }
     </>

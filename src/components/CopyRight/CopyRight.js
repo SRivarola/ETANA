@@ -7,7 +7,7 @@ export default function CopyRight() {
     <div className='copyRight'>
         <div className='container'>
             <section className='misDatos'>
-              <p className='primer'>CREADO POR</p>
+              <p className='primer'>CREADO  <span>POR</span></p>
               <img src={ logo } alt='logo'/>
               <p>srivarola@gmail.com</p>
             </section>

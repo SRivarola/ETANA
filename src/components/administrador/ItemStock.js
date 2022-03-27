@@ -22,6 +22,7 @@ export default function ItemStock({name, img, stock}) {
                             <th>39</th>
                             <th>40</th>
                             <th>41</th>
+                            <th>TOTAL</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,6 +34,7 @@ export default function ItemStock({name, img, stock}) {
                             <th>{stock[39]}</th>
                             <th>{stock[40]}</th>
                             <th>{stock[41]}</th>
+                            <th>{stock[36] + stock[37] + stock[38] + stock[39] + stock[40] + stock[41]}</th>
                         </tr>
                     </tbody>
                 </table>

@@ -78,7 +78,8 @@ export default function AdminStock() {
                     });
                     setImgProduct(null);
                     setValues({
-                        ...values,
+                        id: '',
+                        talle: '',
                         cantidad: ''});
                 })
                 .finally(() => {
