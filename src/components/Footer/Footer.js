@@ -1,6 +1,6 @@
 import React from 'react'
 import './Footer.scss'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AiFillInstagram } from "react-icons/ai";
 import { HiMail } from "react-icons/hi";
 import Terminos from '../ModalTerminos/Terminos';
@@ -9,6 +9,10 @@ import ModalGuia from '../ModalGuia/ModalGuia';
 export default function Footer() {
 
   const navigate = useNavigate();
+
+  const handleRedirect = () => {
+    window.open('https://instagram.com/etanabaires?utm_medium=copy_link', '_blank')
+  }
 
   return (
     <>
@@ -32,10 +36,7 @@ export default function Footer() {
               <h5><HiMail /><span>etanabaires@gmail.com</span></h5>
             </div>
             <div>
-              <a href='https://instagram.com/etanabaires?utm_medium=copy_link' target='_blank'>
-                <h5><AiFillInstagram /><span>@etanabaires</span></h5>
-              </a>
-  
+              <h5 onClick={handleRedirect} className='instagram'><AiFillInstagram /><span>@etanabaires</span></h5>
             </div>
           </div>
         </div>

@@ -35,6 +35,9 @@
                 text-align: left;
                 width: fit-content;
                 margin-left: -6px;
+                &:hover{
+                    color: #fffb00;
+                }
             }
         }
         .contacto{
@@ -47,6 +50,15 @@
                 }
                 span{
                     padding-left: 5px;
+                }
+                .instagram{
+                    cursor: pointer;
+                    width: fit-content;
+                    span{
+                        &:hover{
+                            color: #fffb00;
+                        }
+                    }
                 }
             }
         }

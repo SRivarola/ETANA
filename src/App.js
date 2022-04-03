@@ -1,6 +1,6 @@
 import NavBarContainer from './components/NavBar/NavBarContainer';
 import Home from './pages/Home/Home';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import ItemDetailContainer from './pages/ItemDetailContainer/ItemDetailContainer';
 import Cart from './pages/Cart/Cart';
 import CartContextProvider from './context/CartContext';
@@ -21,7 +21,7 @@ function App() {
   return (
     <UserContextProvider>
       <CartContextProvider>
-        <Router>
+        <HashRouter>
           <NavBarContainer />
 
           <Routes>
@@ -51,7 +51,7 @@ function App() {
             <Route path='/devolucion' element={<PoliticaDevolucion/>}/>                                                                     
             <Route path = "/*" element={<Error />}/>                          
           </Routes>
-        </Router>
+        </HashRouter>
       </CartContextProvider>
     </UserContextProvider>
   );
